@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/aormcuw/go-jwt/controllers"
 	"github.com/aormcuw/go-jwt/initializer"
 	"github.com/gin-gonic/gin"
 )
@@ -13,11 +14,9 @@ func init() {
 
 func main() {
 	r := gin.Default()
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "hello world",
-		})
-	})
+
+	r.POST("/signup", controllers.Signup)
+	r.POST("/login", controllers.Login)
 
 	r.Run()
 }
